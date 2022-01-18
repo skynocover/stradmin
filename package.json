@@ -1,0 +1,16 @@
+{
+  "name": "stradmin",
+  "version": "1.0.0",
+  "bin": {
+    "stradmin": "./src/index.mjs"
+  },
+  "scripts": {
+    "start": "node src/index.mjs"
+  },
+  "repository": "https://github.com/skynocover/stradmin.git",
+  "author": "EricWu <skynocover@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^8.3.0"
+  }
+}

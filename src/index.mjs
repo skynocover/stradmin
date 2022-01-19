@@ -66,6 +66,7 @@ class Api {
       switch (this.#apiAttributes[key]['type']) {
         case 'richtext':
         case 'date':
+        case 'datetime':
         case 'json':
           this.interface[key] = 'string';
           break;
@@ -260,14 +261,14 @@ const makePage = async (api) => {
     
       const init = async (page = currentPage, title?: string) => {
         setSpinning(true);
-        const pagination = {
+        const qstring = {
           sort: 'createdAt:desc',
-          ${api.populate().length > 0 && `populate: ${JSON.stringify(api.populate())},`}
+          ${api.populate().length > 0 ? `populate: ${JSON.stringify(api.populate())},` : ''}
           pagination: { page, pageSize },
         };
         const data = await appCtx.fetch(
           'get',
-          '/api/${api.pluralName()}?' + qs.stringify(pagination),
+          '/api/${api.pluralName()}?' + qs.stringify(qstring),
         );
         if (data) {
           const temp = data.data.map((item: any) => {

@@ -67,12 +67,14 @@ class Api {
         case 'richtext':
         case 'date':
         case 'datetime':
+        case 'time':
         case 'json':
           this.interface[key] = 'string';
           break;
 
         case 'integer':
           this.interface[key] = 'number';
+          break;
 
         case 'media':
         case 'relation':
